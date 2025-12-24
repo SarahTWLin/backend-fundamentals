@@ -46,8 +46,9 @@ The backend server will serve the following endpoints:
     ```
 - **Returns**:
     - `200`: "Success. Task created."
-    - `500`: "Internal server error."
     - `400`: "Bad request."
+    - `500`: "Internal server error."
+    
 
 ##### `GET /tasks`
 - **Description**: Gets the list of **Task** objects that the user created
@@ -75,3 +76,68 @@ The backend server will serve the following endpoints:
 
     - `500`: "Internal server error."
     
+
+##### `GET /tasks/:id`
+- **Description**: Gets a specific **Task** object with given id
+- **Param**: `id` 
+- **Returns**:
+    - `200`: "Success"
+
+        Example output:
+
+        ```json
+        {
+            "id": 1,
+            "title": "Task1",
+            "description": "First task",
+            "status": "todo"
+        },
+        ```
+
+    - `400`: "Bad request."
+    - `404`: "Task not found."
+    - `500`: "Internal server error."
+
+
+##### `PUT /tasks/:id`
+- **Description**: Updates field(s) of specific **Task** object with given id
+- **Param**: `id` 
+- **Body-Content** (updateable fields): 
+
+    ```json
+    {
+        "title": "Task1",
+        "description": "First task",
+        "status": "[todo|in-progress|done]"
+    }
+    ```
+- **Returns**:
+    - `200`: "Success. Task has been updated."
+    - `400`: "Bad request."
+    - `404`: "Task not found."
+    - `500`: "Internal server error."
+
+##### `DELETE /tasks/:id`
+- **Description**: Deletes a specific **Task** object with given id
+- **Param**: `id` 
+- **Returns**:
+    - `200`: "Success. Task has been deleted."
+    - `400`: "Bad request."
+    - `404`: "Task not found."
+    - `500`: "Internal server error."
+
+
+#### Code Structure
+
+```css
+src/
+├── index.js
+├── routes/
+|   └── taskRouter.js
+├── controllers/
+|   └── taskController.js
+├── models/
+|   └── taskModel.js
+└── data/
+    └── store.js
+```
