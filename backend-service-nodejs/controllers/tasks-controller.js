@@ -17,7 +17,15 @@ function getTaskList() {
     return sampleData;
 }
 
+function getTaskById(taskId) {
+    const task = getTaskList().find((task) => task.id === taskId);
+    
+    return task;
+}
+
+
 module.exports = 
 { 
-    getTaskList
+    getTaskList,
+    getTaskById 
 }

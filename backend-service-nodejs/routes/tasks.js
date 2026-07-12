@@ -19,8 +19,19 @@ taskRouter.get('/', (req, res, next) => {
 
 
 taskRouter.get("/:id", (req, res, next) => {
-    
-})
+    try {
+        const taskId = req.params.id;
+        const task = taskControllers.getTaskById(taskId);
+
+        res.status(200).send({
+            task: task
+        })
+    }
+    catch (err) {
+        next(err);
+
+    }
+});
 
 
 module.exports = [
