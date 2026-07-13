@@ -25,13 +25,27 @@ taskRouter.get("/:id", (req, res, next) => {
 
         res.status(200).send({
             task: task
-        })
+        });
     }
     catch (err) {
         next(err);
 
     }
 });
+
+taskRouter.post("/", (req, res, next) => {
+    try {
+        const newTask = req.body.task;
+        
+
+        res.status(200).send({
+            status: "Task created"
+        });
+    }
+    catch (err) {
+        next(err);
+    }
+})
 
 
 module.exports = [
