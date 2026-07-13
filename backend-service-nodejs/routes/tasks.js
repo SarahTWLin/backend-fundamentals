@@ -36,8 +36,8 @@ taskRouter.get("/:id", (req, res, next) => {
 taskRouter.post("/", (req, res, next) => {
     try {
         const newTask = req.body.task;
+        const newTaskCreated = taskControllers.createTask(task);
         
-
         res.status(200).send({
             status: "Task created"
         });
