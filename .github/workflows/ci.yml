@@ -24,7 +24,7 @@ jobs:
         working-directory: ./backend-service-nodejs
         run: npm install
 
-      -name: Start DB service
+      - name: Start DB service
         run: docker-compose --env-file backend-service-nodejs/.env up
 
       - name: Run tests
