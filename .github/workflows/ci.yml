@@ -25,7 +25,10 @@ jobs:
         run: npm install
 
       - name: Start DB service
-        run: docker-compose --env-file backend-service-nodejs/.env up
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
+          docker-compose --env-file backend-service-nodejs/.env up
 
       - name: Run tests
         working-directory: backend-service-nodejs
