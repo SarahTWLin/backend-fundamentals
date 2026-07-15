@@ -17,7 +17,6 @@ healthcheckRouter.get('/api', (req, res, next) => {
 healthcheckRouter.get('/db', async (req, res, next) => {
     try {
         const result = await pool.query('SELECT NOW();'); 
-        console.log("HE::");
         
         res.status(200).send({
             status: "OK",
