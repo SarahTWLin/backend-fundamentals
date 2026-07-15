@@ -37,6 +37,11 @@ jobs:
           sudo apt-get install -y docker-compose
           docker-compose --env-file backend-service-nodejs/.env up -d postgres
 
+      - name: Check DB service
+        run: |
+          docker ps
+          docker logs task-db
+          
       - name: Run tests
         working-directory: backend-service-nodejs
         run: npm test
