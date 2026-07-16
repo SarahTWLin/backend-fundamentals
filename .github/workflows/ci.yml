@@ -42,6 +42,13 @@ jobs:
           docker ps
           docker logs task-db
 
+      - name: Wait for DB readiness
+        run: |
+          until docker compose exec -T postgres pg_isready -U ${{ secrets.DB_USER }}; do
+            echo "Waiting for database to be ready..."
+            sleep 5
+          done
+
       - name: Run tests
         working-directory: backend-service-nodejs
         run: npm test
