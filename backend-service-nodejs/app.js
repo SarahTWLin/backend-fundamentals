@@ -9,7 +9,7 @@ const taskRouter = require("./routes/tasks");
 const healthcheckRouter = require("./routes/healthcheck");
 
 app.use(express.json());
-app.use("/tasks/v1/", taskRouter);
-app.use("/healthcheck/v1/", healthcheckRouter);
+app.use(`/tasks/${process.env.VERSION}/`, taskRouter);
+app.use(`/healthcheck/${process.env.VERSION}/`, healthcheckRouter);
 
 module.exports = app;
