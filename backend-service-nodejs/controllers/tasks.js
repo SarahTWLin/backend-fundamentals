@@ -33,7 +33,7 @@ const getTask = (req, res, next) => {
 
 const createTask = (req, res, next) => {
     try {
-        const newTask = req.body.task;
+        const newTask = req.body;
         const results = taskControllers.createTask(newTask);
 
         res.status(201).send({
