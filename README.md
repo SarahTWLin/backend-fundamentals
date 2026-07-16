@@ -136,15 +136,37 @@ The backend server will serve the following endpoints:
 #### Code Structure
 
 ```css
-src/
-├── app.js
-├── index.js
-├── routes/
-|   └── taskRouter.js
-├── controllers/
-|   └── taskController.js
-├── models/
-|   └── taskModel.js
-└── data/
-    └── store.js
+backend-fundamentals
+|   /* GitHub Actions CI */
+├── .github/
+|   └── workflows
+|       └── ci.yaml
+|
+|   /* Backend Service : Node.js */
+├── backend-service-nodejs/
+|   ├── Dockerfile              
+|   ├── app.js
+|   ├── index.js
+|   ├── routes/
+|   |   └── taskRouter.js
+|   ├── controllers/
+|   |   └── taskController.js
+|   ├── prisma/
+|   |   ├── migrations/
+|   |   |   /* Prisma client for DB access layer */
+|   |   ├── prisma.js    
+|   |   |   /* DB schema */     
+|   |   └── schema.prisma       
+|   └── database/
+|       |   /* DB connector for healthcheck */
+|       └── db.js               
+|
+|  /* Automation Scripts to start app */
+├── scripts/
+|   ├── dockerize.sh                    
+|   └── migrate-and-deploy-schema.js
+├── .gitignore
+├── docker-compose.yml
+└── README.md
+
 ```
