@@ -1,5 +1,7 @@
 const express = require("express");
 const taskRouter = express.Router();
+const validate = require("../middleware/validate");
+const { createTaskSchema } = require("../validators/task-validator");
 
 const { getTaskList, getTask, createTask } = require("../controllers/tasks");
 
@@ -52,6 +54,10 @@ taskRouter.get("/:id", getTask);
  *       201:
  *         description: Task created successfully
  */
-taskRouter.post("/", createTask);
+taskRouter.post(
+    "/",
+    validate(createTaskSchema), 
+    createTask
+);
 
 module.exports = taskRouter;
