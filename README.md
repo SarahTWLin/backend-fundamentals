@@ -220,8 +220,13 @@ backend-fundamentals
 #### 1. Clone & Install
 
 ```bash
-git clone git@github.com:SarahTWLin/backend-fundamentals.git
+git clone git@github.com:SarahTWLin/backend-engineering-lab.git
 cd backend-service-nodejs/
 npm install
 ```
 
+#### 2. Run Start
+
+```bash
+./scripts/dockerize.sh
+```
