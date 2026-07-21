@@ -26,10 +26,21 @@ async function createTask(task) {
     return result;
 }
 
+async function deleteTask(taskId) {
+    const results = await prisma.task.delete({
+        where: {
+            id: parseInt(taskId)
+        }
+    });
+
+    return results;
+}
+
 
 module.exports = 
 { 
     getTaskList,
     getTaskById,
-    createTask
+    createTask,
+    deleteTask
 }

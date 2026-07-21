@@ -3,7 +3,7 @@ const taskRouter = express.Router();
 const validate = require("../middleware/validate");
 const { createTaskSchema } = require("../validators/task-validator");
 
-const { getTaskList, getTask, createTask } = require("../controllers/tasks");
+const { getTaskList, getTask, createTask, deleteTask } = require("../controllers/tasks");
 
 /**
  * @swagger
@@ -58,6 +58,28 @@ taskRouter.post(
     "/",
     validate(createTaskSchema), 
     createTask
+);
+
+/**
+ * @swagger
+ * /tasks/v1/{id}:
+ *   delete:
+ *     summary: Delete task by ID
+ *     tags:
+ *       - Tasks
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Successfully retrieved tasks
+ */
+taskRouter.delete(
+    "/:id",
+    deleteTask
 );
 
 module.exports = taskRouter;

@@ -45,9 +45,24 @@ const createTask = (req, res, next) => {
     }
 };
 
+const deleteTask = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const results = taskControllers.deleteTask(id);
+
+        res.status(201).send({
+            status: `Task ${id} deleted.`
+        });
+    }
+    catch (err) {
+        next(err);
+    }
+}
+
 
 module.exports = {
     getTaskList,
     getTask,
-    createTask
+    createTask,
+    deleteTask
 }
